@@ -1,5 +1,7 @@
 from django.db import models
-
+import uuid
+from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 # Create your models here.
 class Editora(models.Model):
     nome = models.CharField("Nome", max_length=50)
@@ -26,17 +28,17 @@ class Livros(models.Model):
     autor = models.ForeignKey(Autor, on_delete=models.DO_NOTHING)
 
     def __str__(self):
-        return "Titulo: " +self.titulo + "| Autor: " + self.autor.nome + "| Data: " + str(self.data)
+        return self.titulo
 
     class Meta:
         verbose_name="Livro"
         verbose_name_plural="Livros"
 
 class Emprestimo(models.Model):
-    codigo = models.BigIntegerField(auto_created=True)
-    usuario = models.CharField("Usuario", max_length=50)
-    data_emp = models.DateField("Data de Emprestimo")
-    livro = models.ForeignKey(Livros, on_delete=models.DO_NOTHING, related_name="Emprestimo")
+    codigo = models.UUIDField(default=uuid.uuid4, editable=False)
+    usuario = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, null=True, blank=True)
+    data_emp = models.DateField(auto_now_add=True)
+    livro = models.ForeignKey(Livros, on_delete=models.DO_NOTHING, related_name="emprestimo_livro")
 
     def __str__(self):
-        return "Data de Emprestimo: " + str(self.data_emp) + "Usuario: " + self.usuario + "Livro:" + self.livro.titulo
+        return   " Data de Emprestimo: " + str(self.data_emp) + " Livro:" + self.livro.titulo 

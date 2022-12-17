@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Histórico</h1>
+<h2>Emprestimos:</h2>
+<ul class="list-group">
+  {% for emprestimo in emprestimos %}
+    <li class="list-group-item"><span style="font-weight: bold;">{{ emprestimo.livro.titulo }} |</span> Data de emprestimo: {{emprestimo.data_emp}} <a class='btn btn-danger ms-5' href="{% url 'fazer_devolucao' emprestimo.id %}">Fazer Devolução</a></li>
+  {% endfor %}
+</ul>
+{% endblock content %}

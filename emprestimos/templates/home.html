@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row mt-5">
+    <div class="col">
+      <h2>Livros: </h2>
+      <ul class='list-group'>
+        {%for livro in livros %}
+        <li class="list-group-item"><a href="{% url 'detalhar_livro' livro.id %}">{{livro.titulo}}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+  </div>
+{% endblock content %}

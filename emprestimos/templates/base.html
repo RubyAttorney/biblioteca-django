@@ -15,7 +15,7 @@
   </head>
 
   <body>
-
+    
     <header>
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -46,6 +46,17 @@
               </li>
             </ul>
           </div>
+          <form method="GET" id="search-form">
+            <div class="pesquisa">
+              <div id="barra-pesquisa">
+                <input id="pesquisa-texto"type="text" name='search' placeholder="Pesquisar...">
+                <button id="pesquisa-botao">
+                    <img  id="lupa-azul" src="{% static 'img/loupe-blue.svg'%}" alt="">
+                    <img id="lupa-branca" src="{% static 'img/loupe-white.svg'%}" alt="">
+                </button>
+              </div>
+            </div>
+          </form>
           <div class="col-md-3 text-end">
             {% if user.is_authenticated %}
             <span class="text-white">{{ user.username }}</span>

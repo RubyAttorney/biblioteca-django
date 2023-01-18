@@ -6,8 +6,14 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 def home(request):
-    livros = Livros.objects.all()
-    return render(request, "home.html", {"livros":livros})
+    search = request.GET.get('search')
+
+    if search:
+        livros = Livros.objects.filter(titulo__icontains=search)
+        return render(request, "home.html", {"livros":livros})
+    else:
+        livros = Livros.objects.all()[:10]
+        return render(request, "home.html", {"livros":livros})
 
 def detalhar_livro(request, id):
     livro = Livros.objects.get(id=id)

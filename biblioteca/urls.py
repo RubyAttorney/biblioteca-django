@@ -1,23 +1,8 @@
-"""biblioteca URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from emprestimos.views import home, detalhar_livro, fazer_emprestimo, historico_emprestimo, fazer_devolucao
+from emprestimos.views import home, detalhar_livro, fazer_emprestimo, historico_emprestimo, fazer_devolucao, cadastrar_livro, atualizar_livro, meus_livros, deletar_livro
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
@@ -26,4 +11,8 @@ urlpatterns = [
     path('fazer_emprestimo/<int:id>', fazer_emprestimo,name='fazer_emprestimo'),
     path('historico_emprestimo/',historico_emprestimo, name='historico_emprestimo'),
     path('fazer_devolucao/<int:id>',fazer_devolucao, name='fazer_devolucao'),
+    path('cadastrar_livro/',cadastrar_livro, name='cadastrar_livro'),
+    path('atualizar_livro/<int:id>',atualizar_livro, name='atualizar_livro'),
+    path('meus_livros/',meus_livros, name='meus_livros'),
+    path('deletar_livro/<int:id>',deletar_livro, name='deletar_livro'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

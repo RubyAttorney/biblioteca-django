@@ -1,12 +1,11 @@
-from django.forms import ModelForm
-from django.contrib.auth.models import User
+from django import forms
 from .models import Livros, Emprestimo
-class LivrosForm(ModelForm):
+class LivrosForm(forms.ModelForm):
     class Meta:
         model = Livros
-        fields = ['titulo','descricao','quantidade','editora','autor']
-
-class EmprestimoForm(ModelForm):
+        fields = ['titulo','descricao','quantidade','editora']
+        
+class EmprestimoForm(forms.ModelForm):
     class Meta:
         model = Emprestimo
         fields = [ 'livro']

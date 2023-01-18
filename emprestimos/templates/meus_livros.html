@@ -7,7 +7,7 @@
       <h2>Livros: </h2>
       <ul class='list-group'>
         {%for livro in livros %}
-        <li class="list-group-item"><a href="{% url 'detalhar_livro' livro.id %}">{{livro.titulo}}</a></li>
+        <li class="list-group-item"><a href="{% url 'detalhar_livro' livro.id %}">{{livro.titulo}}</a> <a class='btn btn-warning ms-5' href="{% url 'atualizar_livro' livro.id %}">Fazer Alteração</a> <a class="btn btn-danger" href="{% url 'deletar_livro' livro.id%}">Deletar</a></li>
         {% endfor %}
         </ul>
     </div>

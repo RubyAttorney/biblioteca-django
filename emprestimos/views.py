@@ -19,9 +19,10 @@ def detalhar_livro(request, id):
     livro = Livros.objects.get(id=id)
     return render(request, "detalhar_livro.html", {"livro":livro})
 
+@login_required
 def cadastrar_livro(request):
     if request.method == 'POST':
-        form = LivrosForm(request.POST)
+        form = LivrosForm(request.POST, request.FILES)
         if form.is_valid():
             form_id = form.save()
             livro = Livros.objects.get(id=form_id.id)
@@ -73,9 +74,9 @@ def atualizar_livro(request, id):
 def deletar_livro(request,id):
     livro = get_object_or_404(Livros, pk=id)
     livro.delete()
-    return redirect('/')
+    return redirect('/meus_livros/')
 
+@login_required
 def meus_livros(request):
     livros = Livros.objects.filter(autor= request.user)
     return render(request,'meus_livros.html',{'livros':livros})
-

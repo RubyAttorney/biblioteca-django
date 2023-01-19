@@ -15,4 +15,6 @@ urlpatterns = [
     path('atualizar_livro/<int:id>',atualizar_livro, name='atualizar_livro'),
     path('meus_livros/',meus_livros, name='meus_livros'),
     path('deletar_livro/<int:id>',deletar_livro, name='deletar_livro'),
-] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

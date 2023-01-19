@@ -3,7 +3,7 @@ from .models import Livros, Emprestimo
 class LivrosForm(forms.ModelForm):
     class Meta:
         model = Livros
-        fields = ['titulo','descricao','quantidade','editora']
+        fields = ['titulo','descricao','quantidade','editora','capa']
         
 class EmprestimoForm(forms.ModelForm):
     class Meta:

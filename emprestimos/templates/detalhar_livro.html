@@ -3,8 +3,9 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/estilo.css'%}">
 <div>
-    <h3 class= "title mt-5">{{livro.titulo}}</h2>
-    <ul class= "list-group">
+    <h3 class= "title mt-5">Titulo: {{livro.titulo}}</h2>
+        <img src="{{ livro.capa.url }}" alt="" style='height:300px; '>
+    <ul class= "list-group mt-1">
         <li class="list-group-item">Descricao: {{ livro.descricao }}</li>
         <li class="list-group-item">Data:  {{ livro.data }}</li>
         {%if livro.quantidade > 0%}

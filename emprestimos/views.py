@@ -10,10 +10,10 @@ def home(request):
 
     if search:
         livros = Livros.objects.filter(titulo__icontains=search)
-        return render(request, "home.html", {"livros":livros})
+        return render(request, "index.html", {"livros":livros})
     else:
         livros = Livros.objects.all()[:10]
-        return render(request, "home.html", {"livros":livros})
+        return render(request, "index.html", {"livros":livros})
 
 def detalhar_livro(request, id):
     livro = Livros.objects.get(id=id)

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$b!@p!ja$&t&31&^81ramq+u&l!x)1nk+qr7y9yh+9v63c47!m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://rubyattorney.github.io/biblioteca-django/']
 
 
 # Application definition
